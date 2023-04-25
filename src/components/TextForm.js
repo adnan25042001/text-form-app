@@ -3,16 +3,35 @@ import React, { useState } from "react";
 let TextForm = (props) => {
     // it converts the text into uppercase
     let upClick = () => {
+        if (text === "") {
+            props.showAlert("warning", "No text available");
+        } else if (text === text.toUpperCase()) {
+            props.showAlert("primary", "Text already in uppercase");
+        } else {
+            props.showAlert("success", "Converted to uppercase");
+        }
         setText(text.toUpperCase());
     };
 
     // it converts the text into lowercase
     let downClick = () => {
+        if (text === "") {
+            props.showAlert("warning", "No text available");
+        } else if (text === text.toLowerCase()) {
+            props.showAlert("danger", "Text already in lowercase");
+        } else {
+            props.showAlert("success", "Converted to lowercase");
+        }
         setText(text.toLowerCase());
     };
 
     // clears the text
     let clearText = () => {
+        if (text === "") {
+            props.showAlert("primary", "Text already cleared");
+        } else {
+            props.showAlert("success", "Text cleared");
+        }
         setText("");
     };
 
@@ -87,22 +106,36 @@ let TextForm = (props) => {
 
     // to copy the text
     let copyText = () => {
-        let text = document.getElementById("my-box");
         navigator.clipboard
-            .writeText(text.value)
+            .writeText(text)
             .then()
             .catch((error) => {
                 console.error("Error copying text: ", error);
             });
+
+        if (text === "") {
+            props.showAlert("warning", "No text copy");
+            console.log(1);
+        } else {
+            props.showAlert("success", "Text copied successfully");
+        }
     };
 
     // removes the extra spaces
     let removeExtraSpaces = () => {
         //splits the text into array with no spaces
-        let newText = text.split(/[ ]+/);
+        let newTextArr = text.split(/[ ]+/);
+
+        let newText = newTextArr.join(" ");
+
+        if (text === newText) {
+            props.showAlert("warning", "No extra Spaces");
+        } else {
+            props.showAlert("success", "Extra Spaces has been removed");
+        }
 
         // joins the array with single space
-        setText(newText.join(" "));
+        setText(newText);
     };
 
     // checks the average time to read the whole text
@@ -143,7 +176,7 @@ let TextForm = (props) => {
                         props.mode === "light" ? "dark" : "light"
                     }`}
                 >
-                    <h1>{props.heading}</h1>
+                    <h1 className="my-4">{props.heading}</h1>
                     <textarea
                         style={{
                             fontSize: 20,

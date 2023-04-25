@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 
 let TextForm = (props) => {
+    // it converts the text into uppercase
     let upClick = () => {
         setText(text.toUpperCase());
     };
+
+    // it converts the text into lowercase
     let downClick = () => {
         setText(text.toLowerCase());
     };
+
+    // clears the text
     let clearText = () => {
         setText("");
     };
+
+    // converts the text into speech
     let textSpeech = () => {
         let msg = new SpeechSynthesisUtterance();
         let voices = window.speechSynthesis.getVoices();
@@ -33,6 +40,8 @@ let TextForm = (props) => {
             dropDown.append(list);
         }
     };
+
+    // it counts the numbers of vowels in the text
     let countVowel = () => {
         const vowels = ["a", "e", "i", "o", "u"];
 
@@ -51,6 +60,8 @@ let TextForm = (props) => {
         // Return the count of vowels
         return count;
     };
+
+    // it counts the numbers of consonents in the text
     let countConsonents = () => {
         // Define an array of vowels
         const vowels = ["a", "e", "i", "o", "u"];
@@ -73,6 +84,8 @@ let TextForm = (props) => {
         // Return the count of consonants
         return count;
     };
+
+    // to copy the text
     let copyText = () => {
         let text = document.getElementById("my-box");
         navigator.clipboard
@@ -83,23 +96,36 @@ let TextForm = (props) => {
             });
     };
 
-    let removeExtraSpaces = ()=> {
+    // removes the extra spaces
+    let removeExtraSpaces = () => {
+        //splits the text into array with no spaces
         let newText = text.split(/[ ]+/);
-        setText(newText.join(" "));
-    }
 
+        // joins the array with single space
+        setText(newText.join(" "));
+    };
+
+    // checks the average time to read the whole text
     let checkTime = () => {
+        // count the number of words
         let words =
             text.trim().split(" ")[0] === ""
                 ? 0
                 : text.trim().split(" ").length;
-        let time = 60 / 125 * words;
-        if(time < 60) return Math.ceil(time) + " seconds";
-        else{
-            if(time % 60 === 0) {
-                return time/60 + " min";
-            }else{
-                return Math.floor(time/60) + " min " + Math.round(time % 60) + " seconds";
+
+        // average time in seconds
+        let time = (60 / 125) * words;
+        if (time < 60) return Math.ceil(time) + " seconds";
+        else {
+            if (time % 60 === 0) {
+                return time / 60 + " min";
+            } else {
+                return (
+                    Math.floor(time / 60) +
+                    " min " +
+                    Math.round(time % 60) +
+                    " seconds"
+                );
             }
         }
     };
@@ -108,17 +134,23 @@ let TextForm = (props) => {
         setText(event.target.value);
     };
     const [text, setText] = useState("");
-    
+
     return (
         <>
-            <div className={`container bg-${props.mode} `}>
-                <div className="mb-3 my-3">
+            <div className="container">
+                <div
+                    className={`mb-3 my-3 text-${
+                        props.mode === "light" ? "dark" : "light"
+                    }`}
+                >
                     <h1>{props.heading}</h1>
                     <textarea
                         style={{
                             fontSize: 20,
                         }}
-                        className={`form-control bg-${props.mode} text-${props.mode === "light" ? "dark" : "light"}`}
+                        className={`form-control bg-${props.mode} text-${
+                            props.mode === "light" ? "dark" : "light"
+                        }`}
                         id="my-box"
                         rows="6"
                         value={text}
@@ -171,7 +203,11 @@ let TextForm = (props) => {
                     </button>
                 </div>
             </div>
-            <div className={`container  bg-${props.mode} text-${props.mode === "light" ? "dark" : "light"}`}>
+            <div
+                className={`container text-${
+                    props.mode === "light" ? "dark" : "light"
+                }`}
+            >
                 <h2>Your Text Summary</h2>
                 <p>{`${
                     text.trim().split(" ")[0] === ""

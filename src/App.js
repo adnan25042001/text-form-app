@@ -20,7 +20,7 @@ function App() {
     if(mode === "light"){
         body.style.background="white"
     }else{
-        body.style.background="rgb(35, 40, 45)"
+        body.style.background="rgb(40, 45, 50)"
     }
     return (
         <>

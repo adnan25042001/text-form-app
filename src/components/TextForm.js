@@ -18,7 +18,7 @@ let TextForm = (props) => {
         if (text === "") {
             props.showAlert("warning", "No text available");
         } else if (text === text.toLowerCase()) {
-            props.showAlert("danger", "Text already in lowercase");
+            props.showAlert("primary", "Text already in lowercase");
         } else {
             props.showAlert("success", "Converted to lowercase");
         }

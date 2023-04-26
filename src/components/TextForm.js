@@ -6,7 +6,7 @@ let TextForm = (props) => {
         if (text === "") {
             props.showAlert("warning", "No text available");
         } else if (text === text.toUpperCase()) {
-            props.showAlert("primary", "Text already in uppercase");
+            props.showAlert("success", "Text already in uppercase");
         } else {
             props.showAlert("success", "Converted to uppercase");
         }
@@ -18,7 +18,7 @@ let TextForm = (props) => {
         if (text === "") {
             props.showAlert("warning", "No text available");
         } else if (text === text.toLowerCase()) {
-            props.showAlert("primary", "Text already in lowercase");
+            props.showAlert("success", "Text already in lowercase");
         } else {
             props.showAlert("success", "Converted to lowercase");
         }
@@ -28,7 +28,7 @@ let TextForm = (props) => {
     // clears the text
     let clearText = () => {
         if (text === "") {
-            props.showAlert("primary", "Text already cleared");
+            props.showAlert("success", "Text already cleared");
         } else {
             props.showAlert("success", "Text cleared");
         }

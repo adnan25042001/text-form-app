@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 let Navbar = (props) => {
     return (
@@ -7,9 +8,13 @@ let Navbar = (props) => {
             className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
         >
             <div className="container-fluid">
-                <a className="navbar-brand" href="/">
-                    {props.title}
-                </a>
+                <Link to="/" className="navbar-brand">
+                    <img
+                        style={{ width: 34, height: 34 }}
+                        src="./favicon.ico"
+                        alt="Logo"
+                    />
+                </Link>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -24,21 +29,18 @@ let Navbar = (props) => {
                 <div
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
+                    style={{ fontSize: 18 }}
                 >
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a
-                                className="nav-link active"
-                                aria-current="page"
-                                href="/"
-                            >
+                            <Link className="nav-link" to="/home">
                                 {props.home}
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/">
+                            <Link className="nav-link" to="/about">
                                 {props.about}
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div

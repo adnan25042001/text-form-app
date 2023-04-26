@@ -2,8 +2,10 @@ import "./App.css";
 import React from "react";
 import Navbar from "./components/Navbar";
 import Alert from "./components/Alert";
+import About from "./components/About";
 import TextForm from "./components/TextForm";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     let [mode, setMode] = useState(localStorage.getItem("mode") || "light");
@@ -17,7 +19,7 @@ function App() {
         });
         setTimeout(() => {
             setAlert(null);
-        }, 2000)
+        }, 2000);
     };
 
     let toggleMode = () => {
@@ -39,23 +41,43 @@ function App() {
     }
     return (
         <>
-            <Navbar
-                title="MyTitle"
-                home="Home"
-                about="About"
-                mode={mode}
-                toggleMode={toggleMode}
-            />
-            <Alert alert={alert} />
-            <div className="container">
-                <TextForm
-                    heading="Enter the text to analyze"
-                    btn="Convert to Uppercase"
+            <BrowserRouter>
+                <Navbar
+                    title="MyTitle"
+                    home="Home"
+                    about="About"
                     mode={mode}
-                    showAlert={showAlert}
+                    toggleMode={toggleMode}
                 />
-                {/* <About/> */}
-            </div>
+                <Alert alert={alert} />
+                <div className="container">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <TextForm
+                                    heading="Enter the text to analyze"
+                                    btn="Convert to Uppercase"
+                                    mode={mode}
+                                    showAlert={showAlert}
+                                />
+                            }
+                        />
+                        <Route
+                            path="/home"
+                            element={
+                                <TextForm
+                                    heading="Enter the text to analyze"
+                                    btn="Convert to Uppercase"
+                                    mode={mode}
+                                    showAlert={showAlert}
+                                />
+                            }
+                        />
+                        <Route path="/about" element={<About mode={mode} />} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
         </>
     );
 }

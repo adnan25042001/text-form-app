@@ -1,40 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 
 export default function About(props) {
-    let [btnText, setBtnText] = useState("Dark Mode");
-    let [theme, setTheme] = useState({
-        backgroundColor: "white",
-        color: "black",
-    });
-    let toggletheme = () => {
-        if (btnText === "Dark Mode") {
-            document.querySelector("body").style.background = "rgb(45, 45, 45)";
-            setBtnText("Light Mode");
-            setTheme({
-                backgroundColor: "rgb(30, 30, 30)",
-                color: "white",
-            });
-        } else {
-            document.querySelector("body").style.background = "white";
-            setBtnText("Dark Mode");
-            setTheme({
-                backgroundColor: "white",
-                color: "black",
-            });
-        }
-    };
     return (
         <>
-            <div
-                className="accordion my-5"
-                id="accordionPanelsStayOpenExample"
-                style={theme}
-            >
-                <div className="accordion-item" style={theme}>
+            <div className="accordion my-5" id="accordionPanelsStayOpenExample">
+                <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button
-                            style={theme}
-                            className="accordion-button"
+                            className={`accordion-button bg-${
+                                props.mode
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#panelsStayOpen-collapseOne"
@@ -48,7 +25,13 @@ export default function About(props) {
                         id="panelsStayOpen-collapseOne"
                         className="accordion-collapse collapse show"
                     >
-                        <div className="accordion-body">
+                        <div
+                            className={`accordion-body bg-${
+                                props.mode === "light" ? "light" : "secondary"
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
+                        >
                             <strong>
                                 This is the first item's accordion body.
                             </strong>{" "}
@@ -59,16 +42,28 @@ export default function About(props) {
                             CSS transitions. You can modify any of this with
                             custom CSS or overriding our default variables. It's
                             also worth noting that just about any HTML can go
-                            within the <code>.accordion-body</code>, though the
-                            transition does limit overflow.
+                            within the{" "}
+                            <code
+                                className={`text-${
+                                    props.mode === "light"
+                                        ? "danger"
+                                        : "warning"
+                                }`}
+                            >
+                                .accordion-body
+                            </code>
+                            , though the transition does limit overflow.
                         </div>
                     </div>
                 </div>
-                <div className="accordion-item" style={theme}>
+                <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button
-                            style={theme}
-                            className="accordion-button collapsed"
+                            className={`accordion-button collapsed bg-${
+                                props.mode
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#panelsStayOpen-collapseTwo"
@@ -82,7 +77,13 @@ export default function About(props) {
                         id="panelsStayOpen-collapseTwo"
                         className="accordion-collapse collapse"
                     >
-                        <div className="accordion-body">
+                        <div
+                            className={`accordion-body bg-${
+                                props.mode === "light" ? "light" : "secondary"
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
+                        >
                             <strong>
                                 This is the second item's accordion body.
                             </strong>{" "}
@@ -93,16 +94,28 @@ export default function About(props) {
                             CSS transitions. You can modify any of this with
                             custom CSS or overriding our default variables. It's
                             also worth noting that just about any HTML can go
-                            within the <code>.accordion-body</code>, though the
-                            transition does limit overflow.
+                            within the{" "}
+                            <code
+                                className={`text-${
+                                    props.mode === "light"
+                                        ? "danger"
+                                        : "warning"
+                                }`}
+                            >
+                                .accordion-body
+                            </code>
+                            , though the transition does limit overflow.
                         </div>
                     </div>
                 </div>
-                <div className="accordion-item" style={theme}>
+                <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button
-                            style={theme}
-                            className="accordion-button collapsed"
+                            className={`accordion-button collapsed bg-${
+                                props.mode
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#panelsStayOpen-collapseThree"
@@ -116,7 +129,13 @@ export default function About(props) {
                         id="panelsStayOpen-collapseThree"
                         className="accordion-collapse collapse"
                     >
-                        <div className="accordion-body">
+                        <div
+                            className={`accordion-body bg-${
+                                props.mode === "light" ? "light" : "secondary"
+                            } text-${
+                                props.mode === "light" ? "dark" : "light"
+                            }`}
+                        >
                             <strong>
                                 This is the third item's accordion body.
                             </strong>{" "}
@@ -127,20 +146,20 @@ export default function About(props) {
                             CSS transitions. You can modify any of this with
                             custom CSS or overriding our default variables. It's
                             also worth noting that just about any HTML can go
-                            within the <code>.accordion-body</code>, though the
-                            transition does limit overflow.
+                            within the{" "}
+                            <code
+                                className={`text-${
+                                    props.mode === "light"
+                                        ? "danger"
+                                        : "warning"
+                                }`}
+                            >
+                                .accordion-body
+                            </code>
+                            , though the transition does limit overflow.
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="container">
-                <button
-                    type="button"
-                    className="btn btn-primary my-3"
-                    onClick={toggletheme}
-                >
-                    {btnText}
-                </button>
             </div>
         </>
     );

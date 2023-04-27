@@ -8,7 +8,7 @@ let TextForm = (props) => {
         } else if (text === text.toUpperCase()) {
             props.showAlert("success", "Text already in uppercase");
         } else {
-            props.showAlert("success", "Converted to uppercase");
+            props.showAlert("success", "Text converted to uppercase");
         }
         setText(text.toUpperCase());
     };
@@ -20,7 +20,7 @@ let TextForm = (props) => {
         } else if (text === text.toLowerCase()) {
             props.showAlert("success", "Text already in lowercase");
         } else {
-            props.showAlert("success", "Converted to lowercase");
+            props.showAlert("success", "Text converted to lowercase");
         }
         setText(text.toLowerCase());
     };
@@ -36,29 +36,30 @@ let TextForm = (props) => {
     };
 
     // converts the text into speech
-    let textSpeech = () => {
-        let msg = new SpeechSynthesisUtterance();
-        let voices = window.speechSynthesis.getVoices();
-        let dropDown = document.getElementById("drop-down-btn");
-        for (let i = 0; i < voices.length; i++) {
-            let list = document.createElement("li");
-            let a = document.createElement("a");
-            a.innerText = voices[i].name;
-            a.href = "/";
-            a.setAttribute("class", "dropdown-item");
-            a.addEventListener("click", () => {
-                msg.voice = voices[i];
-                msg.text = text;
-                window.speechSynthesis.speak(msg);
-            });
-            list.append(a);
-            if (i !== 0) {
-                let hr = document.createElement("hr");
-                dropDown.append(hr);
-            }
-            dropDown.append(list);
-        }
-    };
+    // let textSpeech = (ele) => {
+    //     ele.preventDefault();
+    //     let msg = new SpeechSynthesisUtterance();
+    //     let voices = window.speechSynthesis.getVoices();
+    //     let dropDown = document.getElementById("drop-down-btn");
+    //     for (let i = 0; i < voices.length; i++) {
+    //         let list = document.createElement("li");
+    //         let a = document.createElement("a");
+    //         a.innerText = voices[i].name;
+    //         a.href = "/";
+    //         a.setAttribute("class", "dropdown-item");
+    //         a.addEventListener("click", () => {
+    //             msg.voice = voices[i];
+    //             msg.text = text;
+    //             window.speechSynthesis.speak(msg);
+    //         });
+    //         list.append(a);
+    //         if (i !== 0) {
+    //             let hr = document.createElement("hr");
+    //             dropDown.append(hr);
+    //         }
+    //         dropDown.append(list);
+    //     }
+    // };
 
     // it counts the numbers of vowels in the text
     let countVowel = () => {
@@ -114,8 +115,7 @@ let TextForm = (props) => {
             });
 
         if (text === "") {
-            props.showAlert("warning", "No text copy");
-            console.log(1);
+            props.showAlert("warning", "No text to copy");
         } else {
             props.showAlert("success", "Text copied successfully");
         }
@@ -170,13 +170,13 @@ let TextForm = (props) => {
 
     return (
         <>
-            <div className="container">
+            <div className="container mb-2">
                 <div
-                    className={`mb-3 my-3 text-${
+                    className={`text-${
                         props.mode === "light" ? "dark" : "light"
                     }`}
                 >
-                    <h1 className="my-4">{props.heading}</h1>
+                    <h1 className="mb-4">{props.heading}</h1>
                     <textarea
                         style={{
                             fontSize: 20,
@@ -190,24 +190,24 @@ let TextForm = (props) => {
                         onChange={onChange}
                     ></textarea>
                     <button
-                        className="btn btn-primary my-3 mx-1"
+                        className="btn btn-primary my-2 mx-1"
                         onClick={upClick}
                     >
                         Convert to Uppercase
                     </button>
                     <button
-                        className="btn btn-primary my-3 mx-1"
+                        className="btn btn-primary my-2 mx-1"
                         onClick={downClick}
                     >
                         Convert to Lowercase
                     </button>
                     <button
-                        className="btn btn-primary my-3 mx-1"
+                        className="btn btn-primary my-2 mx-1"
                         onClick={clearText}
                     >
                         Clear text
                     </button>
-                    <div className="btn-group">
+                    {/* <div className="btn-group">
                         <button
                             type="button"
                             className="btn btn-primary dropdown-toggle"
@@ -221,15 +221,15 @@ let TextForm = (props) => {
                             className="dropdown-menu w-300"
                             id="drop-down-btn"
                         ></ul>
-                    </div>
+                    </div> */}
                     <button
-                        className="btn btn-primary my-3 mx-1"
+                        className="btn btn-primary my-2 mx-1"
                         onClick={copyText}
                     >
                         Copy text
                     </button>
                     <button
-                        className="btn btn-primary my-3 mx-1"
+                        className="btn btn-primary my-2 mx-1"
                         onClick={removeExtraSpaces}
                     >
                         Remove Extra Spaces

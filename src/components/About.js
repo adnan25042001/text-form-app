@@ -3,7 +3,10 @@ import React from "react";
 export default function About(props) {
     return (
         <>
-            <div className="accordion my-5" id="accordionPanelsStayOpenExample">
+            <div
+                className="accordion my-2 mb-2"
+                id="accordionPanelsStayOpenExample"
+            >
                 <div className="accordion-item">
                     <h2 className="accordion-header">
                         <button
@@ -18,7 +21,7 @@ export default function About(props) {
                             aria-expanded="true"
                             aria-controls="panelsStayOpen-collapseOne"
                         >
-                            Accordion Item #1
+                            Text Utils
                         </button>
                     </h2>
                     <div
@@ -32,27 +35,10 @@ export default function About(props) {
                                 props.mode === "light" ? "dark" : "light"
                             }`}
                         >
-                            <strong>
-                                This is the first item's accordion body.
-                            </strong>{" "}
-                            It is shown by default, until the collapse plugin
-                            adds the appropriate classes that we use to style
-                            each element. These classes control the overall
-                            appearance, as well as the showing and hiding via
-                            CSS transitions. You can modify any of this with
-                            custom CSS or overriding our default variables. It's
-                            also worth noting that just about any HTML can go
-                            within the{" "}
-                            <code
-                                className={`text-${
-                                    props.mode === "light"
-                                        ? "danger"
-                                        : "warning"
-                                }`}
-                            >
-                                .accordion-body
-                            </code>
-                            , though the transition does limit overflow.
+                            <strong>Text Utils</strong> is a website where
+                            people can manipulate their text like making
+                            uppercase, lowercase, capying the text, clear the
+                            text and can remove the extra spaces from the text.
                         </div>
                     </div>
                 </div>
@@ -70,7 +56,7 @@ export default function About(props) {
                             aria-expanded="false"
                             aria-controls="panelsStayOpen-collapseTwo"
                         >
-                            Accordion Item #2
+                            Search Engine Optimization
                         </button>
                     </h2>
                     <div
@@ -84,27 +70,17 @@ export default function About(props) {
                                 props.mode === "light" ? "dark" : "light"
                             }`}
                         >
-                            <strong>
-                                This is the second item's accordion body.
-                            </strong>{" "}
-                            It is hidden by default, until the collapse plugin
-                            adds the appropriate classes that we use to style
-                            each element. These classes control the overall
-                            appearance, as well as the showing and hiding via
-                            CSS transitions. You can modify any of this with
-                            custom CSS or overriding our default variables. It's
-                            also worth noting that just about any HTML can go
-                            within the{" "}
-                            <code
-                                className={`text-${
-                                    props.mode === "light"
-                                        ? "danger"
-                                        : "warning"
-                                }`}
-                            >
-                                .accordion-body
-                            </code>
-                            , though the transition does limit overflow.
+                            <strong>Search Engine Optimization</strong> is no
+                            longer about stuffing keywords and attempting to
+                            trick Google into ranking your website. It' s about
+                            creating a user experience that is data driven. We
+                            know what customers are searching for and we know
+                            how to get them to a page. It' s a combination of
+                            science and art to successfully rank a website. A
+                            successful website does three things: It attracts
+                            the right kinds of visitors. Guides them to the main
+                            services or product you offer. Collect Contact
+                            details for future ongoing relation
                         </div>
                     </div>
                 </div>
@@ -122,7 +98,7 @@ export default function About(props) {
                             aria-expanded="false"
                             aria-controls="panelsStayOpen-collapseThree"
                         >
-                            Accordion Item #3
+                            Quality
                         </button>
                     </h2>
                     <div
@@ -136,27 +112,10 @@ export default function About(props) {
                                 props.mode === "light" ? "dark" : "light"
                             }`}
                         >
-                            <strong>
-                                This is the third item's accordion body.
-                            </strong>{" "}
-                            It is hidden by default, until the collapse plugin
-                            adds the appropriate classes that we use to style
-                            each element. These classes control the overall
-                            appearance, as well as the showing and hiding via
-                            CSS transitions. You can modify any of this with
-                            custom CSS or overriding our default variables. It's
-                            also worth noting that just about any HTML can go
-                            within the{" "}
-                            <code
-                                className={`text-${
-                                    props.mode === "light"
-                                        ? "danger"
-                                        : "warning"
-                                }`}
-                            >
-                                .accordion-body
-                            </code>
-                            , though the transition does limit overflow.
+                            Getting a quality website is not an expenses but
+                            rather an investment. Most common method for
+                            designing websites that work well on desktop is
+                            responsive and adaptive design.
                         </div>
                     </div>
                 </div>

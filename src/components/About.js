@@ -35,10 +35,13 @@ export default function About(props) {
                                 props.mode === "light" ? "dark" : "light"
                             }`}
                         >
-                            <strong>Text Utils</strong> is a website where
-                            people can manipulate their text like making
-                            uppercase, lowercase, capying the text, clear the
-                            text and can remove the extra spaces from the text.
+                            <strong>Text Utils</strong> is a word counter,
+                            character counter, consonent counter and vowel
+                            counter utility which can be used to manipulate your
+                            text in the way you want. You can remove extra
+                            spaces, copy the manipulated text as well as convert
+                            your text from Uppercase to lowercase and Lowercase
+                            to uppercase.
                         </div>
                     </div>
                 </div>

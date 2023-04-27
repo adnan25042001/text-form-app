@@ -190,7 +190,7 @@ let TextForm = (props) => {
                         props.mode === "light" ? "dark" : "light"
                     }`}
                 >
-                    <h1 className="mb-4">{props.heading}</h1>
+                    <h2 className="mb-4">{props.heading}</h2>
                     <textarea
                         style={{
                             fontSize: 20,
@@ -260,10 +260,10 @@ let TextForm = (props) => {
                     props.mode === "light" ? "dark" : "light"
                 }`}
             >
-                <h2>Your Text Summary</h2>
+                <h3>Your Text Summary</h3>
                 <p>{`${countWords()} words, ${countCharacters()} characters, ${countConsonents()} consonents and ${countVowel()} vowels`}</p>
                 <p>{checkTime()} read</p>
-                <h2>Preview</h2>
+                <h3>Preview</h3>
                 <p>{text.length > 0 ? text : "Nothing to preview"}</p>
             </div>
         </>

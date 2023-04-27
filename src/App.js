@@ -58,7 +58,7 @@ function App() {
                             path="/"
                             element={
                                 <TextForm
-                                    heading="Enter the text to analyze"
+                                    heading="Try TextUtils - word counter, character counter, remove extra spaces"
                                     btn="Convert to Uppercase"
                                     mode={mode}
                                     showAlert={showAlert}
@@ -69,7 +69,7 @@ function App() {
                             path="/home"
                             element={
                                 <TextForm
-                                    heading="Enter the text to analyze"
+                                    heading="Try TextUtils - word counter, character counter, remove extra spaces"
                                     btn="Convert to Uppercase"
                                     mode={mode}
                                     showAlert={showAlert}

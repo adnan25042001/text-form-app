@@ -4,7 +4,7 @@ export default function About(props) {
     return (
         <>
             <div
-                className="accordion my-2 mb-2"
+                className="accordion my-2 mb-3"
                 id="accordionPanelsStayOpenExample"
             >
                 <div className="accordion-item">

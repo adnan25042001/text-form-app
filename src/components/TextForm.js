@@ -264,7 +264,7 @@ let TextForm = (props) => {
                 <p>{`${countWords()} words, ${countCharacters()} characters, ${countConsonents()} consonents and ${countVowel()} vowels`}</p>
                 <p>{checkTime()} read</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length > 0 ? text : "Nothing to preview"}</p>
             </div>
         </>
     );

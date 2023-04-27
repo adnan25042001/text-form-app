@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     let [mode, setMode] = useState(localStorage.getItem("mode") || "light");
-
     let [alert, setAlert] = useState(null);
 
     let showAlert = (type, message) => {
@@ -33,12 +32,14 @@ function App() {
             showAlert("success", "Light mode has been enabled");
         }
     };
+
     let body = document.querySelector("body");
     if (mode === "light") {
         body.style.background = "white";
     } else {
         body.style.background = "rgb(40, 45, 50)";
     }
+
     return (
         <>
             <BrowserRouter>

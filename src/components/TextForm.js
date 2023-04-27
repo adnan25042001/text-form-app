@@ -140,11 +140,11 @@ let TextForm = (props) => {
 
     // checks the average time to read the whole text
     let checkTime = () => {
+        // split the text into an array
+        let textArr = text.trim().split("\n").join(" ").split(/[ ]+/);
+
         // count the number of words
-        let words =
-            text.trim().split(" ")[0] === ""
-                ? 0
-                : text.trim().split(" ").length;
+        let words = textArr[0] === "" ? 0 : textArr.length;
 
         // average time in seconds
         let time = (60 / 125) * words;
@@ -161,6 +161,20 @@ let TextForm = (props) => {
                 );
             }
         }
+    };
+
+    let countWords = () => {
+        let textArr = text.trim().split("\n").join(" ").split(/[ ]+/);
+        if (textArr[0] === "") return 0;
+        return textArr.length;
+    };
+
+    let countCharacters = () => {
+        let count = 0;
+        for (let i = 0; i < text.length; i++) {
+            if (text[i] !== " ") count++;
+        }
+        return count;
     };
 
     let onChange = (event) => {
@@ -242,13 +256,7 @@ let TextForm = (props) => {
                 }`}
             >
                 <h2>Your Text Summary</h2>
-                <p>{`${
-                    text.trim().split(" ")[0] === ""
-                        ? 0
-                        : text.trim().split(" ").length
-                } words, ${
-                    text.split("").length
-                } characters, ${countConsonents()} consonents and ${countVowel()} vowels`}</p>
+                <p>{`${countWords()} words, ${countCharacters()} characters, ${countConsonents()} consonents and ${countVowel()} vowels`}</p>
                 <p>{checkTime()} read</p>
                 <h2>Preview</h2>
                 <p>{text}</p>

@@ -164,7 +164,7 @@ let TextForm = (props) => {
     };
 
     let countWords = () => {
-        let textArr = text.trim().split("\n").join(" ").split(/[ ]+/);
+        let textArr = text.trim().split(/\s+/);
         if (textArr[0] === "") return 0;
         return textArr.length;
     };
@@ -172,7 +172,7 @@ let TextForm = (props) => {
     let countCharacters = () => {
         let count = 0;
         for (let i = 0; i < text.length; i++) {
-            if (text[i] !== " ") count++;
+            if (text[i] !== " " && text[i] !== "\n") count++;
         }
         return count;
     };

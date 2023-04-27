@@ -206,18 +206,21 @@ let TextForm = (props) => {
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={upClick}
+                        disabled={text.length === 0 ? true : false}
                     >
                         Convert to Uppercase
                     </button>
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={downClick}
+                        disabled={text.length === 0 ? true : false}
                     >
                         Convert to Lowercase
                     </button>
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={clearText}
+                        disabled={text.length === 0 ? true : false}
                     >
                         Clear text
                     </button>
@@ -239,12 +242,14 @@ let TextForm = (props) => {
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={copyText}
+                        disabled={text.length === 0 ? true : false}
                     >
                         Copy text
                     </button>
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={removeExtraSpaces}
+                        disabled={text.length === 0 ? true : false}
                     >
                         Remove Extra Spaces
                     </button>

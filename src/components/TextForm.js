@@ -121,6 +121,23 @@ let TextForm = (props) => {
         }
     };
 
+    let firstLetterCaps = () => {
+        let textArr = text.trim().split(".");
+        let newText = "";
+        for(let i = 0; i < textArr.length; i++){
+            textArr[i] = textArr[i].trim();
+            if(textArr[i] !== ""){
+                newText += textArr[i][0].toUpperCase() + textArr[i].slice(1) + ". ";
+            }
+        }
+        setText(newText.trim());
+        if (text === "") {
+            props.showAlert("warning", "No text to Capitalize");
+        } else {
+            props.showAlert("success", "Text Capitalize successfully");
+        }
+    }
+
     // removes the extra spaces
     let removeExtraSpaces = () => {
         //splits the text into array with no spaces
@@ -252,6 +269,13 @@ let TextForm = (props) => {
                         disabled={text.length === 0 ? true : false}
                     >
                         Remove Extra Spaces
+                    </button>
+                    <button
+                        className="btn btn-primary my-2 mx-1"
+                        onClick={firstLetterCaps}
+                        disabled={text.length === 0 ? true : false}
+                    >
+                        Capitalize FIrst Letter
                     </button>
                 </div>
             </div>

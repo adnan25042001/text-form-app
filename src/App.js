@@ -6,6 +6,7 @@ import About from "./components/About";
 import TextForm from "./components/TextForm";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
     let [mode, setMode] = useState(localStorage.getItem("mode") || "light");
@@ -57,23 +58,27 @@ function App() {
                             exact
                             path="/"
                             element={
-                                <TextForm
-                                    heading="Try TextUtils - word counter, character counter, remove extra spaces"
-                                    btn="Convert to Uppercase"
-                                    mode={mode}
-                                    showAlert={showAlert}
-                                />
+                                <>
+                                    <TextForm
+                                        heading="Try TextUtils - word counter, character counter, remove extra spaces"
+                                        mode={mode}
+                                        showAlert={showAlert}
+                                    />
+                                    <Footer mode={mode} />
+                                </>
                             }
                         />
                         <Route
                             path="/home"
                             element={
-                                <TextForm
-                                    heading="Try TextUtils - word counter, character counter, remove extra spaces"
-                                    btn="Convert to Uppercase"
-                                    mode={mode}
-                                    showAlert={showAlert}
-                                />
+                                <>
+                                    <TextForm
+                                        heading="Try TextUtils - word counter, character counter, remove extra spaces"
+                                        mode={mode}
+                                        showAlert={showAlert}
+                                    />
+                                    <Footer mode={mode} />
+                                </>
                             }
                         />
                         <Route path="/about" element={<About mode={mode} />} />

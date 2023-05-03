@@ -44,27 +44,20 @@ let Navbar = (props) => {
                         </li>
                     </ul>
                     <div
-                        className={`form-check form-switch nav-item text-${
+                        className={`nav-item text-${
                             props.mode === "light" ? "dark" : "light"
-                        } mx-1`}
+                        }`}
                     >
-                        <input
-                            className="form-check-input my-check"
-                            type="checkbox"
-                            role="switch"
-                            id={`flexSwitchCheck${
-                                props.mode === "light" ? "Default" : "Checked"
-                            }`}
-                            checked={props.mode === "light" ? false : true}
-                            readOnly
+                        <img
+                            src={props.mode === "light" ? "./moon.png" : "./sun.png"}
+                            alt=""
+                            height="26px"
+                            width="26px"
+                            id="theme-btn"
+                            className="mx-2"
                             onClick={props.toggleMode}
+                            style={{margin:"0", padding:"0"}}
                         />
-                        <label
-                            className="form-check-label"
-                            htmlFor="flexSwitchCheckDefault"
-                        >
-                            Theme
-                        </label>
                     </div>
                 </div>
             </div>

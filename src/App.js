@@ -27,10 +27,12 @@ function App() {
             localStorage.setItem("mode", "dark");
             setMode("dark");
             showAlert("success", "Dark mode has been enabled");
+            document.getElementById("theme-btn").src = "./sun.png"
         } else {
             localStorage.setItem("mode", "light");
             setMode("light");
             showAlert("success", "Light mode has been enabled");
+            document.getElementById("theme-btn").src = "./moon.png"
         }
     };
 

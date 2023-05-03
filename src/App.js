@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 
 function App() {
-    let [mode, setMode] = useState(localStorage.getItem("mode") || "light");
+    let [mode, setMode] = useState(localStorage.getItem("mode") || "dark");
     let [alert, setAlert] = useState(null);
 
     let showAlert = (type, message) => {

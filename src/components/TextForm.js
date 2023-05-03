@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 let TextForm = (props) => {
+    let voices = window.speechSynthesis.getVoices();
     // it converts the text into uppercase
     let upClick = () => {
         if (text === "") {
@@ -36,30 +37,31 @@ let TextForm = (props) => {
     };
 
     // converts the text into speech
-    // let textSpeech = (ele) => {
-    //     ele.preventDefault();
-    //     let msg = new SpeechSynthesisUtterance();
-    //     let voices = window.speechSynthesis.getVoices();
-    //     let dropDown = document.getElementById("drop-down-btn");
-    //     for (let i = 0; i < voices.length; i++) {
-    //         let list = document.createElement("li");
-    //         let a = document.createElement("a");
-    //         a.innerText = voices[i].name;
-    //         a.href = "/";
-    //         a.setAttribute("class", "dropdown-item");
-    //         a.addEventListener("click", () => {
-    //             msg.voice = voices[i];
-    //             msg.text = text;
-    //             window.speechSynthesis.speak(msg);
-    //         });
-    //         list.append(a);
-    //         if (i !== 0) {
-    //             let hr = document.createElement("hr");
-    //             dropDown.append(hr);
-    //         }
-    //         dropDown.append(list);
-    //     }
-    // };
+    let speechText = () => {
+        let msg = new SpeechSynthesisUtterance();
+        voices = window.speechSynthesis.getVoices();
+        let dropDown = document.getElementById("drop-down-btn");
+        for (let i = 0; i < voices.length; i++) {
+            let list = document.createElement("li");
+            let a = document.createElement("a");
+            a.innerText = voices[i].name;
+            a.href = "/";
+            a.setAttribute("class", "dropdown-item");
+            a.addEventListener("click", (e) => {
+                e.preventDefault();
+                msg.voice = voices[i];
+                msg.lang = voices[i].lang;
+                msg.text = text;
+                window.speechSynthesis.speak(msg);
+            });
+            list.append(a);
+            if (i !== 0) {
+                let hr = document.createElement("hr");
+                dropDown.append(hr);
+            }
+            dropDown.append(list);
+        }
+    };
 
     // it counts the numbers of vowels in the text
     let countVowel = () => {
@@ -124,10 +126,11 @@ let TextForm = (props) => {
     let firstLetterCaps = () => {
         let textArr = text.trim().split(".");
         let newText = "";
-        for(let i = 0; i < textArr.length; i++){
+        for (let i = 0; i < textArr.length; i++) {
             textArr[i] = textArr[i].trim();
-            if(textArr[i] !== ""){
-                newText += textArr[i][0].toUpperCase() + textArr[i].slice(1) + ". ";
+            if (textArr[i] !== "") {
+                newText +=
+                    textArr[i][0].toUpperCase() + textArr[i].slice(1) + ". ";
             }
         }
         setText(newText.trim());
@@ -136,7 +139,7 @@ let TextForm = (props) => {
         } else {
             props.showAlert("success", "Text Capitalize successfully");
         }
-    }
+    };
 
     // removes the extra spaces
     let removeExtraSpaces = () => {
@@ -241,21 +244,29 @@ let TextForm = (props) => {
                     >
                         Clear text
                     </button>
-                    {/* <div className="btn-group">
+                    <div className="btn-group">
                         <button
                             type="button"
                             className="btn btn-primary dropdown-toggle"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
-                            onClick={textSpeech}
+                            onClick={speechText}
+                            disabled={text.length === 0 ? true : false}
                         >
                             TextSpeech
                         </button>
                         <ul
-                            className="dropdown-menu w-300"
+                            className="dropdown-menu scrollable-menu w-300"
                             id="drop-down-btn"
                         ></ul>
-                    </div> */}
+                    </div>
+                    {/* <button
+                        className="btn btn-primary my-2 mx-1"
+                        onClick={speechText}
+                        disabled={text.length === 0 ? true : false}
+                    >
+                        Copy text
+                    </button> */}
                     <button
                         className="btn btn-primary my-2 mx-1"
                         onClick={copyText}

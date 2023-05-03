@@ -5,6 +5,7 @@ const DropdownItem = (props) => {
     let speechText = () => {
         let msg = new SpeechSynthesisUtterance();
         msg.voice = props.voices[props.i];
+        msg.lang = props.voices[props.i].lang;
         msg.text = props.text;
         window.speechSynthesis.speak(msg);
     };

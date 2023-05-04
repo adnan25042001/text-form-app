@@ -6,7 +6,6 @@ import About from "./components/About";
 import TextForm from "./components/TextForm";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
 
 function App() {
     let [mode, setMode] = useState(localStorage.getItem("mode") || "dark");
@@ -27,12 +26,12 @@ function App() {
             localStorage.setItem("mode", "dark");
             setMode("dark");
             showAlert("success", "Dark mode has been enabled");
-            document.getElementById("theme-btn").src = "./sun.png"
+            document.getElementById("theme-btn").src = "./sun.png";
         } else {
             localStorage.setItem("mode", "light");
             setMode("light");
             showAlert("success", "Light mode has been enabled");
-            document.getElementById("theme-btn").src = "./moon.png"
+            document.getElementById("theme-btn").src = "./moon.png";
         }
     };
 
@@ -66,7 +65,6 @@ function App() {
                                         mode={mode}
                                         showAlert={showAlert}
                                     />
-                                    <Footer mode={mode} />
                                 </>
                             }
                         />
@@ -79,7 +77,6 @@ function App() {
                                         mode={mode}
                                         showAlert={showAlert}
                                     />
-                                    <Footer mode={mode} />
                                 </>
                             }
                         />

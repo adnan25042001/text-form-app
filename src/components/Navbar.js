@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 let Navbar = (props) => {
     return (
         <nav
-            className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+            className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode} sticky-top`}
         >
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand">
